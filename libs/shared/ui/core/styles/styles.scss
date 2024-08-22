@@ -1,0 +1,12 @@
+@import 'node_modules/tailwindcss/base.css' layer(tw-base);
+
+@tailwind components;
+@tailwind utilities;
+
+@import 'theme-custom/variables';
+
+@layer tw-base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}

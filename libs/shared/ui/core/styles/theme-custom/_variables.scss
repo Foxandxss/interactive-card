@@ -1,0 +1,30 @@
+:root {
+  --background: 255 255 255;
+  --foreground: 18 18 18;
+
+  --primary: 0 152 205;
+  --primary-dark: 7 54 118;
+  --primary-foreground: 255 255 255;
+
+  --secondary: 255 255 255;
+  --secondary-foreground: var(--primary);
+
+  --muted: 244 244 244;
+  --muted-foreground: 96 96 96;
+
+  --accent: 244 244 244;
+  --accent-foreground: var(--primary);
+
+  --destructive: 190 36 36;
+  --destructive-foreground: 255 255 255;
+
+  --success: 72 178 131;
+  --success-foreground: 18 18 18;
+
+  --warning: 250 200 73;
+  --warning-foreground: 18 18 18;
+
+  --border: 232 232 232;
+  --ring: 244 244 244;
+  --input: 191 191 191;
+}
