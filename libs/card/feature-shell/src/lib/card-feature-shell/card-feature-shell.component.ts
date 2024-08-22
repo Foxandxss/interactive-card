@@ -20,4 +20,4 @@ import { RouterOutlet } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class cardFeatureShellComponent {}
+export class CardFeatureShellComponent {}

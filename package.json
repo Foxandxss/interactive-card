@@ -2,7 +2,9 @@
   "name": "@card/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve card"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "18.2.0",

@@ -1,6 +1,6 @@
 import { type Route } from '@angular/router';
 
-import { cardFeatureShellComponent } from './card-feature-shell/card-feature-shell.component';
+import { CardFeatureShellComponent } from './card-feature-shell/card-feature-shell.component';
 
 const children: Route[] = [
   {
@@ -9,4 +9,4 @@ const children: Route[] = [
   },
 ];
 
-export const cardFeatureShellRoutes: Route[] = [{ path: '', component: cardFeatureShellComponent, children }];
+export const cardFeatureShellRoutes: Route[] = [{ path: '', component: CardFeatureShellComponent, children }];
