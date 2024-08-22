@@ -5,7 +5,7 @@ import { CardFeatureShellComponent } from './card-feature-shell/card-feature-she
 const children: Route[] = [
   {
     path: '',
-    loadChildren: () => import('@card/card-feature-home').then((m) => m.cardFeatureHomeRoutes),
+    loadChildren: () => import('@card/card-feature-form').then((m) => m.cardFeatureFormRoutes),
   },
 ];
 

@@ -1,21 +1,16 @@
 {
-  "name": "card-feature-home",
+  "name": "card-feature-form",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/card/feature-home/src",
+  "sourceRoot": "libs/card/feature-form/src",
   "prefix": "card",
   "projectType": "library",
-  "tags": [
-    "scope:card",
-    "type:feature"
-  ],
+  "tags": ["scope:card", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/card/feature-home/jest.config.ts"
+        "jestConfig": "libs/card/feature-form/jest.config.ts"
       }
     },
     "lint": {
