@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@card/card-feature-home": ["libs/card/feature-home/src/index.ts"],
+      "@card/card-feature-form": ["libs/card/feature-form/src/index.ts"],
       "@card/card-feature-shell": ["libs/card/feature-shell/src/index.ts"],
       "@card/shared-data-access-api": ["libs/shared/data-access/api/src/index.ts"],
       "@card/shared-data-access-api/mocks": ["libs/shared/data-access/api/mocks/src/index.ts"],

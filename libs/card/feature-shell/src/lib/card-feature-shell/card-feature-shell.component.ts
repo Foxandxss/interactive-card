@@ -7,13 +7,15 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   template: `
-    <div class="container p-4">
-      <header>
-        <h1>card Project</h1>
-      </header>
-      <main>
-        <router-outlet />
-      </main>
+    <div class="flex h-screen">
+      <div class="relative flex h-full w-1/2">
+        <div class="h-full w-2/3 bg-[url('../../public/images/bg-main-desktop.png')] bg-cover bg-center"></div>
+
+        <div class="h-full w-1/3"></div>
+      </div>
+      <div class="h-full w-1/2">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   `,
   styles: ``,

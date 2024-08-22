@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'card-feature-home',
+  displayName: 'card-feature-form',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/card/feature-home',
+  coverageDirectory: '../../../coverage/libs/card/feature-form',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
