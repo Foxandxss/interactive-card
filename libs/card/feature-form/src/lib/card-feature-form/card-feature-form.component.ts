@@ -1,14 +1,8 @@
-/* eslint-disable no-useless-escape */
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
-import {
-  type AbstractControl,
-  FormBuilder,
-  ReactiveFormsModule,
-  type ValidationErrors,
-  type ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { YearValidator } from '@card/shared-util-validators';
 
 @Component({
   selector: 'card-card-feature-form',
@@ -79,10 +73,7 @@ export class CardFeatureFormComponent {
         Validators.min(1),
       ],
     ],
-    expDateY: [
-      '',
-      [Validators.pattern('[0-9]{2}'), Validators.minLength(2), Validators.maxLength(2), this.yearValidator()],
-    ],
+    expDateY: ['', [Validators.pattern('[0-9]{2}'), Validators.minLength(2), Validators.maxLength(2), YearValidator()]],
     cvc: ['', [Validators.pattern('[0-9]{3}'), Validators.minLength(3), Validators.maxLength(3)]],
   });
 
@@ -91,19 +82,6 @@ export class CardFeatureFormComponent {
       console.log('Errors', this.cardForm.errors);
     }
     console.log('Forms Valid', this.cardForm.value);
-  }
-
-  yearValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
-      const currentYear = new Date().getFullYear();
-      const year = parseInt(value, 10) + 2000;
-
-      if (year < currentYear || year > currentYear + 5 || year === currentYear) {
-        return { yearValidator: true };
-      }
-      return null;
-    };
   }
 
   get c() {
