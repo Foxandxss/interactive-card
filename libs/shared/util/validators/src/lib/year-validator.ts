@@ -1,6 +1,6 @@
 import { type AbstractControl, type ValidationErrors, type ValidatorFn } from '@angular/forms';
 
-export function YearValidator(yearDifference: number): ValidatorFn {
+export function YearValidator(yearDifference = 5): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
     const currentYear = new Date().getFullYear();
