@@ -18,7 +18,7 @@ import {
       <form [formGroup]="cardForm" (ngSubmit)="onsubmit()">
         <label for="cardName" class="block">CARDHOLDER NAME</label>
         <input placeholder="e.g. Jane Applessed" type="text" formControlName="cardName" required="true" />
-        @if (cardForm.get('cardName')?.hasError('required' && 'pattern')) {
+        @if (cardForm.get('cardName')?.hasError('required')) {
           <div>Name is required</div>
         }
         @if (cardForm.get('cardName')?.hasError('pattern')) {
@@ -30,13 +30,13 @@ import {
 
         <label for="cardNumber" class="block">CARD NUMBER</label>
         <input placeholder="e.g. 1234 5678 9123 0000" type="text" formControlName="cardNumber" />
-        @if (cardForm.get('cardNumber')?.hasError('pattern')) {
+        @if (cardForm.get('cardNumber')?.hasError('pattern' || ('minlength' && 'maxlength'))) {
           <div>Card number is invalid</div>
         }
 
         <h3>EXP. DATE (MM/YY)</h3>
         <input placeholder="MM" type="text" formControlName="expDateM" minlength="2" maxlength="2" />
-        @if (cardForm.get('expDateM')?.hasError('pattern' && 'minlength' && 'maxlength' && 'mothValidator')) {
+        @if (cardForm.get('expDateM')?.hasError('pattern' || 'minlength' || 'maxlength' || ('max' && 'min'))) {
           <div>Month is invalid</div>
         }
 
@@ -64,10 +64,19 @@ export class CardFeatureFormComponent {
 
   readonly cardForm = this.#formBuilder.group({
     cardName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(2)]],
-    cardNumber: ['', Validators.pattern('[0-9]{16}')],
+    cardNumber: [
+      '',
+      [Validators.pattern('[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}'), Validators.minLength(16), Validators.maxLength(16)],
+    ],
     expDateM: [
       '',
-      [Validators.pattern('[0-9]{2}'), Validators.minLength(2), Validators.maxLength(2), this.mothValidator()],
+      [
+        Validators.pattern('^(0[1-9]|1[0-2])$'),
+        Validators.minLength(2),
+        Validators.maxLength(2),
+        Validators.max(12),
+        Validators.min(1),
+      ],
     ],
     expDateY: [
       '',
@@ -80,23 +89,12 @@ export class CardFeatureFormComponent {
     console.log(this.cardForm.value);
   }
 
-  // Falta arreglar los errores de los if porque en vacio sale el invalido
-  mothValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const value = control.value;
-      if (value < 1 || value > 12) {
-        return { mothValidator: true };
-      }
-      return null;
-    };
-  }
-
   yearValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
       const currentYear = new Date().getFullYear();
       const year = parseInt(value, 10) + 2000;
-      if (year < currentYear) {
+      if (year < currentYear || year > currentYear + 5 || year === currentYear) {
         return { yearValidator: true };
       }
       return null;
