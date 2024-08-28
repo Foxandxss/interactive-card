@@ -8,5 +8,8 @@
 @layer tw-base {
   body {
     @apply bg-background text-foreground;
+
+    font-size: 18px;
+    font-weight: 500;
   }
 }

@@ -1,9 +1,8 @@
 {
-  "eslint.validate": [
-    "json"
-  ],
-  "cSpell.words": [
-    "Applessed",
-    "maxlength"
+  "css.validate": false,
+  "scss.validate": false,
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ]
 }

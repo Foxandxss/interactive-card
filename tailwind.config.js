@@ -43,13 +43,19 @@ module.exports = {
           DEFAULT: 'rgb(var(--warning) / <alpha-value>)',
           foreground: 'rgb(var(--warning-foreground) / <alpha-value>)',
         },
-        border: 'rgb(var(--border) / <alpha-value>)',
+        border: {
+          DEFAULT: 'var(--border-default)',
+          initial: 'var(--border-initial)',
+          end: 'var(--border-end)',
+        },
         ring: 'rgb(var(--ring) / <alpha-value>)',
         input: 'rgb(var(--input) / <alpha-value>)',
+        'dark-violet': 'var(--dark-violet)',
+        error: 'var(--error)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
-      },
+      }
     },
   },
   variants: {
