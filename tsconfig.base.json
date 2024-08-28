@@ -28,6 +28,7 @@
       "@card/shared-ui-core/*": ["libs/shared/ui/core/*"],
       "@card/shared-util-environment": ["libs/shared/util/environment/src/index.ts"],
       "@card/shared-util-faker": ["libs/shared/util/faker/src/index.ts"],
+      "@card/shared-util-form": ["libs/shared/util/form/src/index.ts"],
       "@card/shared-util-validators": ["libs/shared/util/validators/src/index.ts"]
     }
   },
