@@ -99,8 +99,17 @@ export class CardFeatureFormComponent implements OnInit {
         Validators.min(1),
       ],
     ],
-    expDateY: ['', [Validators.pattern('[0-9]{2}'), Validators.minLength(2), Validators.maxLength(2), YearValidator()]],
-    cvc: ['', [Validators.pattern('[0-9]{3}'), Validators.minLength(3), Validators.maxLength(3)]],
+    expDateY: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern('[0-9]{2}'),
+        Validators.minLength(2),
+        Validators.maxLength(2),
+        YearValidator(),
+      ],
+    ],
+    cvc: ['', [Validators.required, Validators.pattern('[0-9]{3}'), Validators.minLength(3), Validators.maxLength(3)]],
   });
 
   ngOnInit(): void {
