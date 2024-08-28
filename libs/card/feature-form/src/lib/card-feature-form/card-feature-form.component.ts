@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { FormStateService } from '@card/shared-util-form';
 import { YearValidator } from '@card/shared-util-validators';
 
 @Component({
@@ -54,8 +56,10 @@ import { YearValidator } from '@card/shared-util-validators';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardFeatureFormComponent {
+export class CardFeatureFormComponent implements OnInit {
   readonly #formBuilder = inject(FormBuilder);
+  readonly #cardFormStateService = inject(FormStateService);
+  readonly #destroyRef = inject(DestroyRef);
 
   readonly cardForm = this.#formBuilder.group({
     cardName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(2)]],
@@ -76,6 +80,14 @@ export class CardFeatureFormComponent {
     expDateY: ['', [Validators.pattern('[0-9]{2}'), Validators.minLength(2), Validators.maxLength(2), YearValidator()]],
     cvc: ['', [Validators.pattern('[0-9]{3}'), Validators.minLength(3), Validators.maxLength(3)]],
   });
+
+  ngOnInit(): void {
+    this.#cardFormStateService.setFormState(this.cardForm);
+
+    this.cardForm.valueChanges.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe(() => {
+      this.#cardFormStateService.setFormState(this.cardForm);
+    });
+  }
 
   onsubmit() {
     if (!this.cardForm.valid) {
