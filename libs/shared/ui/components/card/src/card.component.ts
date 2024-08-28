@@ -10,11 +10,24 @@ import { FormStateService } from '@card/shared-util-form';
   template: `
     @let form = formState$ | async;
 
-    @if (form) {
-      <div class="card">
-        <div class="card__number">{{ form.value.cardNumber }}</div>
-      </div>
-    }
+    <div class="relative">
+      <img src="images/bg-card-front.png" class="h-auto w-full" />
+      @if (form) {
+        <div class="lef-10 absolute top-10 text-white">
+          <div class="card__number">{{ form.value.cardNumber }}</div>
+          <div class="card__name">{{ form.value.cardName }}</div>
+          <div class="card__exp=">{{ form.value.expDateM }} / {{ form.value.expDateY }}</div>
+        </div>
+      }
+    </div>
+    <div class="relative">
+      <img src="images/bg-card-back.png" class="h-auto w-full" />
+      @if (form) {
+        <div class="absolute top-10 text-white">
+          <div class="card__cvc">{{ form.value.cvc }}</div>
+        </div>
+      }
+    </div>
   `,
 
   encapsulation: ViewEncapsulation.None,
