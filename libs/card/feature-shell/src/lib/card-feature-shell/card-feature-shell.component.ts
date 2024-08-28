@@ -12,7 +12,9 @@ import { CardComponent } from '@card/shared-ui-components/card';
     <div class="flex h-screen">
       <div class="relative flex h-full w-1/2">
         <div class="h-full w-2/3 bg-[url('../../public/images/bg-main-desktop.png')] bg-cover bg-center"></div>
-        <ui-card />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <ui-card />
+        </div>
         <div class="h-full w-1/3"></div>
       </div>
       <div class="h-full w-1/2">
