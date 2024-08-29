@@ -10,7 +10,7 @@ import { CardComponent } from '@card/shared-ui-components/card';
   imports: [CommonModule, RouterOutlet, CardComponent],
   template: `
     <div class="flex h-full flex-col md:flex-row">
-      <div class="relative flex min-h-60 items-center justify-center md:flex-1">
+      <div class="relative flex min-h-60 md:flex-1 md:items-center md:justify-center">
         <!-- Background desktop -->
         <div
           style="clip-path: inset(0 50% 0 0);"
@@ -21,7 +21,7 @@ import { CardComponent } from '@card/shared-ui-components/card';
         <div
           class="absolute left-0 top-0 block h-full w-full bg-[url('/images/bg-main-desktop.png')] bg-cover bg-no-repeat md:hidden"
         ></div>
-        <div class="relative z-10">
+        <div class="relative z-10 w-full md:w-auto">
           <ui-card />
         </div>
       </div>

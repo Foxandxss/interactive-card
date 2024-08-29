@@ -178,13 +178,13 @@ export class CardFeatureFormComponent implements OnInit {
 
   ngOnInit(): void {
     // TEMP
-    // this.cardForm.patchValue({
-    //   cardName: 'Jane Applessed',
-    //   cardNumber: '1234 5678 9123 0000',
-    //   expDateM: '12',
-    //   expDateY: '26',
-    //   cvc: '123',
-    // });
+    this.cardForm.patchValue({
+      cardName: 'Jane Applessed',
+      cardNumber: '1234 5678 9123 0000',
+      expDateM: '12',
+      expDateY: '26',
+      cvc: '123',
+    });
 
     this.#cardFormStateService.setFormState(this.cardForm);
 
