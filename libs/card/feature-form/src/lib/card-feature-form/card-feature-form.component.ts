@@ -29,13 +29,13 @@ import { YearValidator } from '@card/shared-util-validators';
             />
           </div>
           @if (c.cardName.errors?.['pattern']) {
-            <div class="text-error mt-1 text-sm">Name can't use number</div>
+            <div class="mt-1 text-sm text-error">Name can't use number</div>
           }
           @if (c.cardName.errors?.['minlength']) {
-            <div class="text-error mt-1 text-sm">Name too short</div>
+            <div class="mt-1 text-sm text-error">Name too short</div>
           }
           @if (c.cardName.touched && c.cardName.invalid) {
-            <div class="text-error mt-1 text-sm">Must insert name</div>
+            <div class="mt-1 text-sm text-error">Must insert name</div>
           }
         </div>
         <div>
@@ -52,11 +52,11 @@ import { YearValidator } from '@card/shared-util-validators';
             />
           </div>
           @if (c.cardNumber.errors?.['pattern']) {
-            <div class="text-error mt-1 text-sm">Card number is invalid</div>
+            <div class="mt-1 text-sm text-error">Card number is invalid</div>
           }
 
           @if (c.cardNumber.touched && c.cardNumber.invalid) {
-            <div class="text-error mt-1 text-sm">Insert Card Number</div>
+            <div class="mt-1 text-sm text-error">Insert Card Number</div>
           }
         </div>
         <div class="flex gap-4">
@@ -77,10 +77,10 @@ import { YearValidator } from '@card/shared-util-validators';
                 />
               </div>
               @if (c.expDateM.errors?.['pattern']) {
-                <div class="text-error mt-1 text-sm">Month is invalid</div>
+                <div class="mt-1 text-sm text-error">Month is invalid</div>
               }
               @if (c.expDateM.touched && c.expDateM.invalid) {
-                <div class="text-error mt-1 text-sm">Insert Month</div>
+                <div class="mt-1 text-sm text-error">Insert Month</div>
               }
               <div
                 class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
@@ -95,10 +95,10 @@ import { YearValidator } from '@card/shared-util-validators';
                 />
               </div>
               @if (c.expDateY.errors?.['pattern']) {
-                <div class="text-error mt-1 text-sm">Year is invalid</div>
+                <div class="mt-1 text-sm text-error">Year is invalid</div>
               }
               @if (c.expDateY.touched && c.expDateY.invalid) {
-                <div class="text-error mt-1 text-sm">Insert Year</div>
+                <div class="mt-1 text-sm text-error">Insert Year</div>
               }
             </div>
           </div>
@@ -119,15 +119,15 @@ import { YearValidator } from '@card/shared-util-validators';
               />
             </div>
             @if (c.cvc.errors?.['pattern']) {
-              <div class="text-error mt-1 text-sm">CVC is invalid</div>
+              <div class="mt-1 text-sm text-error">CVC is invalid</div>
             }
             @if (c.cvc.touched && c.cvc.invalid) {
-              <div class="text-error mt-1 text-sm">Insert CVC</div>
+              <div class="mt-1 text-sm text-error">Insert CVC</div>
             }
           </div>
         </div>
         <div>
-          <button type="submit" class="bg-dark-violet h-14 w-full rounded-lg text-white">Confirm</button>
+          <button type="submit" class="h-14 w-full rounded-lg bg-dark-violet text-white">Confirm</button>
         </div>
       </div>
     </form>
@@ -178,6 +178,15 @@ export class CardFeatureFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    // TEMP
+    this.cardForm.patchValue({
+      cardName: 'Jane Applessed',
+      cardNumber: '1234 5678 9123 0000',
+      expDateM: '12',
+      expDateY: '26',
+      cvc: '123',
+    });
+
     this.#cardFormStateService.setFormState(this.cardForm);
 
     this.cardForm.valueChanges.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe(() => {

@@ -1,33 +1,40 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
 
+import { CreditCardFormatPipe } from '@card/shared-ui-pipes/credit-card';
 import { FormStateService } from '@card/shared-util-form';
 
 @Component({
   standalone: true,
   selector: 'ui-card',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, CreditCardFormatPipe, UpperCasePipe],
   template: `
     @let form = formState$ | async;
 
-    <div class="relative">
-      <img src="images/bg-card-front.png" class="h-auto w-full" />
-      @if (form) {
-        <div class="lef-10 absolute top-10 text-white">
-          <div class="card__number">{{ form.value.cardNumber }}</div>
-          <div class="card__name">{{ form.value.cardName }}</div>
-          <div class="card__exp=">{{ form.value.expDateM }} / {{ form.value.expDateY }}</div>
+    @if (form) {
+      <div>
+        <div
+          class="flex h-[245px] w-[447px] flex-col justify-between bg-[url('/images/bg-card-front.png')] bg-no-repeat p-8 text-white"
+        >
+          <div class="flex items-center gap-2">
+            <div class="h-12 w-12 rounded-full bg-white"></div>
+            <div class="h-6 w-6 rounded-full border border-white bg-transparent"></div>
+          </div>
+          <div>
+            <div class="mb-4 tracking-[3px]">{{ form.value.cardNumber | creditCardFormat }}</div>
+            <div class="flex justify-between text-sm">
+              <div>{{ form.value.cardName | uppercase }}</div>
+              <div>{{ form.value.expDateM }} / {{ form.value.expDateY }}</div>
+            </div>
+          </div>
         </div>
-      }
-    </div>
-    <div class="relative">
-      <img src="images/bg-card-back.png" class="h-auto w-full" />
-      @if (form) {
-        <div class="absolute top-10 text-white">
-          <div class="card__cvc">{{ form.value.cvc }}</div>
+      </div>
+      <div>
+        <div class="relative ml-24 mt-8 h-[245px] w-[447px] bg-[url('/images/bg-card-back.png')] bg-no-repeat">
+          <div class="absolute right-[3.4rem] top-[6.7rem] text-white">{{ form.value.cvc }}</div>
         </div>
-      }
-    </div>
+      </div>
+    }
   `,
 
   encapsulation: ViewEncapsulation.None,
