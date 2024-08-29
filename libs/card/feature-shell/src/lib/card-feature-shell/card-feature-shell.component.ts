@@ -9,11 +9,17 @@ import { CardComponent } from '@card/shared-ui-components/card';
   standalone: true,
   imports: [CommonModule, RouterOutlet, CardComponent],
   template: `
-    <div class="flex h-full">
-      <div class="relative flex flex-1 items-center justify-center">
+    <div class="flex h-full flex-col md:flex-row">
+      <div class="relative flex min-h-60 items-center justify-center md:flex-1">
+        <!-- Background desktop -->
         <div
           style="clip-path: inset(0 50% 0 0);"
-          class="absolute left-0 top-0 h-full w-full bg-[url('/images/bg-main-desktop.png')] bg-cover bg-no-repeat"
+          class="absolute left-0 top-0 hidden h-full w-full bg-[url('/images/bg-main-desktop.png')] bg-cover bg-no-repeat md:block"
+        ></div>
+
+        <!-- Background mobile -->
+        <div
+          class="absolute left-0 top-0 block h-full w-full bg-[url('/images/bg-main-desktop.png')] bg-cover bg-no-repeat md:hidden"
         ></div>
         <div class="relative z-10">
           <ui-card />
@@ -29,5 +35,3 @@ import { CardComponent } from '@card/shared-ui-components/card';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardFeatureShellComponent {}
-
-// flex basis-1/2 items-center justify-center bg-[url('/images/bg-main-desktop.png')] bg-cover bg-no-repeat

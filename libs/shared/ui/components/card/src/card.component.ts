@@ -21,7 +21,7 @@ import { FormStateService } from '@card/shared-util-form';
             <div class="h-6 w-6 rounded-full border border-white bg-transparent"></div>
           </div>
           <div>
-            <div class="mb-4 tracking-[3px]">{{ form.value.cardNumber | creditCardFormat }}</div>
+            <div class="mb-4 text-[28px] tracking-[3.42px]">{{ form.value.cardNumber | creditCardFormat }}</div>
             <div class="flex justify-between text-sm">
               <div>{{ form.value.cardName | uppercase }}</div>
               <div>{{ form.value.expDateM }} / {{ form.value.expDateY }}</div>
