@@ -7,7 +7,7 @@ import { Pipe, type PipeTransform } from '@angular/core';
 export class CreditCardFormatPipe implements PipeTransform {
   transform(value: string | number): string {
     if (!value) {
-      return '';
+      return '0000 0000 0000 0000';
     }
 
     // Convert the value to a string

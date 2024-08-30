@@ -15,7 +15,7 @@ import { FormStateService } from '@card/shared-util-form';
       <div class="absolute ml-4 mt-10 flex flex-col md:relative md:m-0">
         <div class="relative top-[-4.3rem] order-2 md:static md:order-1 md:h-[245px] md:w-[447px]">
           <img src="/images/bg-card-front.png" alt="card-front" class="h-[156px] w-[285px] md:size-full" />
-          <div class="absolute left-4 top-4 flex flex-col justify-between text-white md:left-8 md:top-8">
+          <div class="absolute left-4 top-4 flex flex-col justify-between text-white md:left-8 md:right-20 md:top-8">
             <div class="mb-8 flex items-center gap-2 md:mb-12">
               <div class="size-8 rounded-full bg-white md:size-12"></div>
               <div class="size-4 rounded-full border border-white bg-transparent md:size-6"></div>
