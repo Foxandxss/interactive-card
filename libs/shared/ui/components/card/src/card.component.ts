@@ -2,6 +2,7 @@ import { AsyncPipe, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
 
 import { CreditCardFormatPipe } from '@card/shared-ui-pipes/credit-card';
+import { faker } from '@card/shared-util-faker';
 import { FormStateService } from '@card/shared-util-form';
 
 @Component({
@@ -17,7 +18,8 @@ import { FormStateService } from '@card/shared-util-form';
           <img src="/images/bg-card-front.png" alt="card-front" class="h-[156px] w-[285px] md:size-full" />
           <div class="absolute left-4 top-4 flex flex-col justify-between text-white md:left-8 md:right-20 md:top-8">
             <div class="mb-8 flex items-center gap-2 md:mb-12">
-              <div class="size-8 rounded-full bg-white md:size-12"></div>
+              <!-- <div class="size-8 rounded-full bg-white md:size-12"></div> -->
+              <img alt="user" class="h-8 w-8 rounded-full md:h-12 md:w-12" [src]="image" />
               <div class="size-4 rounded-full border border-white bg-transparent md:size-6"></div>
             </div>
             <div>
@@ -47,4 +49,6 @@ import { FormStateService } from '@card/shared-util-form';
 export class CardComponent {
   readonly #cardFormStateService = inject(FormStateService);
   formState$ = this.#cardFormStateService.formState$;
+
+  image = faker.image.url();
 }

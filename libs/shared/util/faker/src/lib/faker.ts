@@ -2,13 +2,13 @@ import { Faker, base, en, es } from '@faker-js/faker';
 
 export const faker = new Faker({ locale: [es, en, base] });
 
-// card
+// seed
 const searchParams = new URL(window.location.href).searchParams;
-const card = searchParams.get('card');
+const seed = searchParams.get('seed');
 
-if (card) {
-  faker.card(Number(card));
-  console.info(`🔹 Faker card '${card}' setted`);
+if (seed) {
+  faker.seed(Number(seed));
+  console.info(`🔹 Faker seed '${seed}' setted`);
 } else {
-  console.info(`🔹 Faker random card '${faker.card()}' setted. Use query param (Ex: ?card=123) to set a specific card`);
+  console.info(`🔹 Faker random seed '${faker.seed()}' setted. Use query param (Ex: ?seed=123) to set a specific seed`);
 }
