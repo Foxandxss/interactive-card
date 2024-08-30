@@ -1,0 +1,1 @@
+import{I as o,h as r}from"./chunk-6CAN53FR.js";var c=(()=>{class t{#t=new r(null);formState$=this.#t.asObservable();setFormState(e){this.#t.next(e)}static \u0275fac=function(a){return new(a||t)};static \u0275prov=o({token:t,factory:t.\u0275fac,providedIn:"root"})}return t})();export{c as a};
