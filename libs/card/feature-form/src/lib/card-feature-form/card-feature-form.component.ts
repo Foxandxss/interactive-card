@@ -15,7 +15,7 @@ import { YearValidator } from '@card/shared-util-validators';
     <form [formGroup]="cardForm" (ngSubmit)="onsubmit()">
       <div class="flex flex-col gap-10">
         <div>
-          <label for="cardName" class="mb-2 block">CARDHOLDER NAME</label>
+          <label for="cardName" class="mb-2 block text-[12px] tracking-[2px]">CARDHOLDER NAME</label>
           <div
             class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
           >
@@ -37,7 +37,7 @@ import { YearValidator } from '@card/shared-util-validators';
           }
         </div>
         <div>
-          <label for="cardNumber" class="mb-2 block">CARD NUMBER</label>
+          <label for="cardNumber" class="mb-2 block text-[12px] tracking-[2px]">CARD NUMBER</label>
           <div
             class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
           >
@@ -57,7 +57,7 @@ import { YearValidator } from '@card/shared-util-validators';
         </div>
         <div class="flex gap-4">
           <div>
-            <label for="expDateM" class="mb-2 block">EXP. DATE (MM/YY)</label>
+            <label for="expDateM" class="mb-2 block text-[12px] tracking-[2px]">EXP. DATE (MM/YY)</label>
             <div class="flex gap-[10px]">
               <div>
                 <div
@@ -104,7 +104,7 @@ import { YearValidator } from '@card/shared-util-validators';
           </div>
 
           <div>
-            <label for="cvc" class="mb-2 block">CVC</label>
+            <label for="cvc" class="mb-2 block text-[12px] tracking-[2px]">CVC</label>
             <div
               class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
             >

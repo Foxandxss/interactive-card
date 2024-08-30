@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
       <img src="images/icon-complete.svg" alt="Confirmation Icon" />
       <h1 class="text-2xl tracking-widest">THANK YOU!</h1>
       <p class="text-gray-400">We've added your card details</p>
-      <button class="h-14 w-full min-w-[380px] rounded-lg bg-dark-violet text-white">Continue</button>
+      <button class="h-14 w-[327px] rounded-lg bg-dark-violet text-white md:min-w-[380px]">Continue</button>
     </div>
   `,
   styles: ``,
