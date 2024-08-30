@@ -27,6 +27,8 @@
       "@card/shared-ui-components/skeleton": ["libs/shared/ui/components/skeleton/index.ts"],
       "@card/shared-ui-core": ["libs/shared/ui/core/index.ts"],
       "@card/shared-ui-core/*": ["libs/shared/ui/core/*"],
+      "@card/shared-ui-pipes": ["libs/shared/ui/pipes/src/index.ts"],
+      "@card/shared-ui-pipes/credit-card": ["libs/shared/ui/pipes/credit-card/index.ts"],
       "@card/shared-util-environment": ["libs/shared/util/environment/src/index.ts"],
       "@card/shared-util-faker": ["libs/shared/util/faker/src/index.ts"],
       "@card/shared-util-form": ["libs/shared/util/form/src/index.ts"],

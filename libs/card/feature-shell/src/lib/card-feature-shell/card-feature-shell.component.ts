@@ -9,15 +9,23 @@ import { CardComponent } from '@card/shared-ui-components/card';
   standalone: true,
   imports: [CommonModule, RouterOutlet, CardComponent],
   template: `
-    <div class="flex h-screen">
-      <div class="relative flex h-full w-1/2">
-        <div class="h-full w-2/3 bg-[url('../../public/images/bg-main-desktop.png')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
+    <div class="flex h-full flex-col md:flex-row">
+      <div class="relative flex min-h-60 md:flex-1 md:items-center md:justify-center">
+        <!-- Background desktop -->
+        <div
+          style="clip-path: inset(0 50% 0 0);"
+          class="absolute left-0 top-0 hidden h-full w-full bg-[url('/images/bg-main-desktop.png')] bg-cover bg-no-repeat md:block"
+        ></div>
+
+        <!-- Background mobile -->
+        <div
+          class="absolute left-0 top-0 block h-full w-full bg-[url('/images/bg-main-desktop.png')] bg-cover bg-no-repeat md:hidden"
+        ></div>
+        <div class="relative z-10 w-full md:w-auto">
           <ui-card />
         </div>
-        <div class="h-full w-1/3"></div>
       </div>
-      <div class="h-full w-1/2">
+      <div class="flex flex-1 items-center justify-center p-6">
         <router-outlet></router-outlet>
       </div>
     </div>

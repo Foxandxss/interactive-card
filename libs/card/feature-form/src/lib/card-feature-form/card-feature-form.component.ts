@@ -12,60 +12,124 @@ import { YearValidator } from '@card/shared-util-validators';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <div>
-      <form [formGroup]="cardForm" (ngSubmit)="onsubmit()">
-        <label for="cardName" class="block">CARDHOLDER NAME</label>
-        <input placeholder="e.g. Jane Applessed" type="text" formControlName="cardName" required="true" />
-        @if (c.cardName.errors?.['pattern']) {
-          <div class="text-red-500">Name can't use number</div>
-        }
-        @if (c.cardName.errors?.['minlength']) {
-          <div class="text-red-500">Name too short</div>
-        }
-        @if (c.cardName.touched && c.cardName.invalid) {
-          <div class="text-red-500">Must insert name</div>
-        }
-
-        <label for="cardNumber" class="block">CARD NUMBER</label>
-        <input placeholder="e.g. 1234 5678 9123 0000" type="text" formControlName="cardNumber" />
-        @if (c.cardNumber.errors?.['pattern']) {
-          <div class="text-red-500">Card number is invalid</div>
-        }
-
-        @if (c.cardNumber.touched && c.cardNumber.invalid) {
-          <div class="text-red-500">Insert Card Number</div>
-        }
-
-        <h3>EXP. DATE (MM/YY)</h3>
-        <input placeholder="MM" type="text" formControlName="expDateM" minlength="2" maxlength="2" />
-        @if (c.expDateM.errors?.['pattern']) {
-          <div class="text-red-500">Month is invalid</div>
-        }
-        @if (c.expDateM.touched && c.expDateM.invalid) {
-          <div class="text-red-500">Insert Month</div>
-        }
-
-        <input placeholder="YY" type="text" formControlName="expDateY" minlength="2" maxlength="2" />
-        @if (c.expDateY.errors?.['pattern']) {
-          <div class="text-red-500">Year is invalid</div>
-        }
-        @if (c.expDateY.touched && c.expDateY.invalid) {
-          <div class="text-red-500">Insert Year</div>
-        }
-
-        <label for="cvc" class="block">CVC</label>
-        <input placeholder="e.g. 123" type="text" formControlName="cvc" maxlength="3" minlength="3" />
-        @if (c.cvc.errors?.['pattern']) {
-          <div class="text-red-500">CVC is invalid</div>
-        }
-        @if (c.cvc.touched && c.cvc.invalid) {
-          <div class="text-red-500">Insert CVC</div>
-        }
+    <form [formGroup]="cardForm" (ngSubmit)="onsubmit()">
+      <div class="flex flex-col gap-10">
         <div>
-          <button type="submit">Confirm</button>
+          <label for="cardName" class="mb-2 block text-[12px] tracking-[2px]">CARDHOLDER NAME</label>
+          <div
+            class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
+          >
+            <input
+              placeholder="e.g. Jane Applessed"
+              id="cardName"
+              type="text"
+              formControlName="cardName"
+              required="true"
+              class="w-full rounded-[calc(0.5rem-1px)] border-none px-4 py-2 outline-none"
+            />
+          </div>
+          @if (c.cardName.errors?.['pattern']) {
+            <div class="mt-1 text-sm text-error">Name can't use number</div>
+          } @else if (c.cardName.errors?.['minlength']) {
+            <div class="mt-1 text-sm text-error">Name too short</div>
+          } @else if (c.cardName.touched && c.cardName.invalid) {
+            <div class="mt-1 text-sm text-error">Can't be blank</div>
+          }
         </div>
-      </form>
-    </div>
+        <div>
+          <label for="cardNumber" class="mb-2 block text-[12px] tracking-[2px]">CARD NUMBER</label>
+          <div
+            class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
+          >
+            <input
+              placeholder="e.g. 1234 5678 9123 0000"
+              id="cardNumber"
+              type="text"
+              formControlName="cardNumber"
+              class="w-full rounded-[calc(0.5rem-1px)] border-none px-4 py-2 outline-none"
+            />
+          </div>
+          @if (c.cardNumber.errors?.['pattern']) {
+            <div class="mt-1 text-sm text-error">Card number is invalid</div>
+          } @else if (c.cardNumber.touched && c.cardNumber.invalid) {
+            <div class="mt-1 text-sm text-error">Insert Card Number</div>
+          }
+        </div>
+        <div class="flex gap-4">
+          <div>
+            <label for="expDateM" class="mb-2 block text-[12px] tracking-[2px]">EXP. DATE (MM/YY)</label>
+            <div class="flex gap-[10px]">
+              <div>
+                <div
+                  class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
+                >
+                  <input
+                    placeholder="MM"
+                    id="expDateM"
+                    type="text"
+                    formControlName="expDateM"
+                    minlength="2"
+                    maxlength="2"
+                    class="w-full rounded-[calc(0.5rem-1px)] border-none px-4 py-2 outline-none"
+                  />
+                </div>
+                @if (c.expDateM.errors?.['pattern']) {
+                  <div class="mt-1 text-sm text-error">Month is invalid</div>
+                } @else if (c.expDateM.touched && c.expDateM.invalid) {
+                  <div class="mt-1 text-sm text-error">Can't be blank</div>
+                }
+              </div>
+              <div>
+                <div
+                  class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
+                >
+                  <input
+                    placeholder="YY"
+                    type="text"
+                    formControlName="expDateY"
+                    minlength="2"
+                    maxlength="2"
+                    class="w-full rounded-[calc(0.5rem-1px)] border-none px-4 py-2 outline-none"
+                  />
+                </div>
+                @if (c.expDateY.errors?.['pattern']) {
+                  <div class="mt-1 text-sm text-error">Year is invalid</div>
+                } @else if (c.expDateY.errors?.['yearValidator']) {
+                  <div class="mt-1 text-sm text-error">Year is in the past or too far</div>
+                } @else if (c.expDateY.touched && c.expDateY.invalid) {
+                  <div class="mt-1 text-sm text-error">Can't be blank</div>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="cvc" class="mb-2 block text-[12px] tracking-[2px]">CVC</label>
+            <div
+              class="rounded-lg bg-border p-px focus-within:bg-gradient-to-b focus-within:from-border-initial focus-within:to-border-end"
+            >
+              <input
+                placeholder="e.g. 123"
+                id="cvc"
+                type="text"
+                formControlName="cvc"
+                maxlength="3"
+                minlength="3"
+                class="w-full rounded-[calc(0.5rem-1px)] border-none px-4 py-2 outline-none"
+              />
+            </div>
+            @if (c.cvc.errors?.['pattern']) {
+              <div class="mt-1 text-sm text-error">CVC is invalid</div>
+            } @else if (c.cvc.touched && c.cvc.invalid) {
+              <div class="mt-1 text-sm text-error">Can't be blank</div>
+            }
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="h-14 w-full rounded-lg bg-dark-violet text-white">Confirm</button>
+        </div>
+      </div>
+    </form>
   `,
   styles: ``,
   encapsulation: ViewEncapsulation.None,
@@ -103,16 +167,25 @@ export class CardFeatureFormComponent implements OnInit {
       '',
       [
         Validators.required,
+        YearValidator(),
         Validators.pattern('[0-9]{2}'),
         Validators.minLength(2),
         Validators.maxLength(2),
-        YearValidator(),
       ],
     ],
     cvc: ['', [Validators.required, Validators.pattern('[0-9]{3}'), Validators.minLength(3), Validators.maxLength(3)]],
   });
 
   ngOnInit(): void {
+    // TEMP
+    this.cardForm.patchValue({
+      cardName: 'Jane Applessed',
+      cardNumber: '1234 5678 9123 0000',
+      expDateM: '12',
+      expDateY: '26',
+      cvc: '123',
+    });
+
     this.#cardFormStateService.setFormState(this.cardForm);
 
     this.cardForm.valueChanges.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe(() => {

@@ -1,33 +1,44 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
 
+import { CreditCardFormatPipe } from '@card/shared-ui-pipes/credit-card';
 import { FormStateService } from '@card/shared-util-form';
 
 @Component({
   standalone: true,
   selector: 'ui-card',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, CreditCardFormatPipe, UpperCasePipe],
   template: `
     @let form = formState$ | async;
 
-    <div class="relative">
-      <img src="images/bg-card-front.png" class="h-auto w-full" />
-      @if (form) {
-        <div class="lef-10 absolute top-10 text-white">
-          <div class="card__number">{{ form.value.cardNumber }}</div>
-          <div class="card__name">{{ form.value.cardName }}</div>
-          <div class="card__exp=">{{ form.value.expDateM }} / {{ form.value.expDateY }}</div>
+    @if (form) {
+      <div class="absolute ml-4 mt-10 flex flex-col md:relative md:m-0">
+        <div class="relative top-[-4.3rem] order-2 md:static md:order-1 md:h-[245px] md:w-[447px]">
+          <img src="/images/bg-card-front.png" alt="card-front" class="h-[156px] w-[285px] md:size-full" />
+          <div class="absolute left-4 top-4 flex flex-col justify-between text-white md:left-8 md:top-8">
+            <div class="mb-8 flex items-center gap-2 md:mb-12">
+              <div class="size-8 rounded-full bg-white md:size-12"></div>
+              <div class="size-4 rounded-full border border-white bg-transparent md:size-6"></div>
+            </div>
+            <div>
+              <div class="mb-4 text-[18px] tracking-[3.42px] md:mb-6 md:text-[28px]">
+                {{ form.value.cardNumber | creditCardFormat }}
+              </div>
+              <div class="flex justify-between">
+                <div class="text-[9px] md:text-[14px]">{{ form.value.cardName | uppercase }}</div>
+                <div class="text-[9px] md:text-[14px]">{{ form.value.expDateM }} / {{ form.value.expDateY }}</div>
+              </div>
+            </div>
+          </div>
         </div>
-      }
-    </div>
-    <div class="relative">
-      <img src="images/bg-card-back.png" class="h-auto w-full" />
-      @if (form) {
-        <div class="absolute top-10 text-white">
-          <div class="card__cvc">{{ form.value.cvc }}</div>
+        <div class="md:ml-18 relative order-1 ml-12 h-[156px] w-[285px] md:order-2 md:mt-8 md:h-[245px] md:w-[447px]">
+          <img src="/images/bg-card-back.png" alt="card-back" class="h-[156px] w-[285px] md:size-full" />
+          <div class="absolute right-[2.2rem] top-[4.3rem] text-white md:right-[3.2rem] md:top-[6.9rem]">
+            <div class="text-[9px] tracking-[1.29px] md:text-[14px] md:tracking-[2px]">{{ form.value.cvc }}</div>
+          </div>
         </div>
-      }
-    </div>
+      </div>
+    }
   `,
 
   encapsulation: ViewEncapsulation.None,

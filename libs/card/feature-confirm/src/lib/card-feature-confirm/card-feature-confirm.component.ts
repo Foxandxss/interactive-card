@@ -7,11 +7,11 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="flex flex-col">
-      <img src="images/icon-complete.svg" alt="Confirmation Icon" class="mb-6 size-16" />
-      <h1 class="flex">THANK YOU!</h1>
-      <p class="mb-6 text-center text-gray-500">We've added your card details</p>
-      <button>Continue</button>
+    <div class="flex flex-col items-center gap-6">
+      <img src="images/icon-complete.svg" alt="Confirmation Icon" />
+      <h1 class="text-2xl tracking-widest">THANK YOU!</h1>
+      <p class="text-gray-400">We've added your card details</p>
+      <button class="h-14 w-[327px] rounded-lg bg-dark-violet text-white md:min-w-[380px]">Continue</button>
     </div>
   `,
   styles: ``,
